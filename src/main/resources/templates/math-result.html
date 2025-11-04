@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style> 
+	
+h1{ 
+	text-align: center; 
+}
+
+p.result{ 
+	text-align: center; 
+	font-size: 20px; 
+}
+
+ol{ 
+	display: inline-block;
+}
+
+body{ 
+	text-align:center; 
+	
+}
+
+.button-container {
+    display: flex;
+	text-align: center; 
+    flex-direction: row;
+	justify-content: center; 
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px; 
+  }
+  
+
+
+  .button-menu{
+	display: inline-block;
+	  padding: 10px 18px;
+	  margin: 16px;
+	  margin-top: 10px;
+	  font-size: 14px;
+	  color: black;
+	  background-color:#c2c4c4;
+	  text-decoration: none;
+	  border-radius: 8px;
+	  width: 150px;            
+	  	   height: 36px;           
+	  	   	   font-weight: bold;
+			   border: 2px solid black;
+  }
+  .button-math{
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 16px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+    background-color:#c2c4c4;
+    text-decoration: none;
+    border-radius: 8px;
+    width: 150px;            
+    	   height: 36px;           
+    	   	   font-weight: bold;
+  		   border: 2px solid black;
+  }
+</style> 
+
+<body> 
+	<h1> Incorrect Questions 錯誤回答:</h1>
+	
+	<ol>
+	  <li th:each="q : ${wrongQuestions}">
+	    <p>Question: <span th:text="${q.text}"></span></p>
+	    <p>Correct Answer 正確答案: <span th:text="${q.answer}"></span></p>
+	  </li>
+	</ol>
+
+	<p class = result>Score 答對題數: <span th:text="${score}"></span> / <span th:text="${total}"></span></p>
+		<p class = result>Accuracy 正確率: <span th:text="${percent}"></span>%</p>
+		<p class = result>Grade 成績: <span th:text="${grade}"></span></p>
+
+		
+		<div class="button-container">
+			   <a href="/student/login" class="button button-menu">Menu <br>回主頁</a>
+			   <a href="/quiz/Math" class="button button-math">Another quiz <br>再試一次</a>
+			 </div> 
+
+</body>

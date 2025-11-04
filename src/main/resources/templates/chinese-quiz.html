@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+h1 {
+    text-align: center;
+}
+
+.question-block {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form{ 
+	text-align: center; 
+}
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin-top: 10px;
+}
+
+.options label {
+    flex: 1;
+    max-width: 150px;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.options input[type="radio"] {
+    display: none;
+}
+
+.options input[type="radio"]:checked + span {
+    color: white;
+    display: inline-block;
+}
+
+</style>
+</head>
+<body>
+<form th:action="@{/quiz/chinese/submit}" method="post">
+    <div th:each="q, i : ${quiz}" class="question-block">
+        <p>Question [[${i.index + 1}]]: [[${q.text}]]</p>
+        <div class="options">
+            <label th:each="opt : ${q.options}">
+                <input type="radio" th:name="${'q' + i.index}" th:value="${opt}">
+                <span>[[${opt}]]</span>
+            </label>
+        </div>
+    </div>
+    <button type="submit" style="margin-top: 20px; padding: 10px 20px;">Submit</button>
+</form></body> 

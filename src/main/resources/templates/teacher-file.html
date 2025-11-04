@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+    }
+    h1 {
+        color: black;
+        text-align: center;
+        margin: 100px auto 40px auto;
+        width: 500px;  
+    }
+	
+	form { 
+		text-align: center;
+		margin: 50px;
+	}
+	
+	.download-container{ 
+		display:flex;
+		text-align: center;
+		justify-content: center; 
+		align-items:center;
+		gap: 10px;
+	}
+	
+
+</style>
+</head>
+<body>
+
+    <h1>Teacher File Manager 老師檔案管理</h1>
+
+    <form action="/teacher/student" method="post" enctype="multipart/form-data" style="display: flex; justify-content: center; align-items: center ;gap: 10px;">
+        <label for="studentInfoFile">Upload Student Info (.csv):</label>
+        <input type="file" id="studentInfoFile" name="studentInfoFile" accept=".csv" >
+		<button type="submit">Submit</button>
+    </form>
+	
+	<form action="/teacher/vocab" method="post" enctype="multipart/form-data">
+		<label for="vocab">Upload Vocabulary List (.csv):</label> 
+		<input type="file" id="vocab" name="vocab" accept=".csv" /> 
+		<button type="submit">Submit</button>
+		    </form>
+			
+	<div class ="download-container">		
+			<p>Download quiz result(.csv):</p> 
+		
+			<a href="/teacher/download">
+	    <button type="button">Download</button>
+			</a></div>
+
+</body>
+</html>
